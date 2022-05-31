@@ -17,18 +17,15 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public float groundPos = -2f;
 
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     public Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameManager.Instance;
         movementDirection = new Vector2();
-        if (gameManager == null)
-        {
-            gameManager = FindObjectOfType<GameManager>();
-        }
         if (playerSprite == null)
         {
             playerSprite = GetComponentInChildren<SpriteRenderer>();

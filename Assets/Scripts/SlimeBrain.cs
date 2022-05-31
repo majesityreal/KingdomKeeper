@@ -10,7 +10,7 @@ public class SlimeBrain : MonoBehaviour
     public Animator slimeAnimator;
 
     public float jumpCooldown; // the thing that resets cooldown
-    public float jumpCooldownCounter; // keeps track of last jump
+    private float jumpCooldownCounter; // keeps track of last jump
 
     public Vector2 movementDirection;
 

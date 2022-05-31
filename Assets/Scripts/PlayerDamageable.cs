@@ -7,7 +7,7 @@ public class PlayerDamageable : Damageable
 
     public BoxCollider2D playerCollider;
 
-    public GameManager gm;
+    private GameManager gameManager;
 
     public SpriteRenderer playerSprite;
 
@@ -22,12 +22,10 @@ public class PlayerDamageable : Damageable
         {
             playerCollider = GetComponent<BoxCollider2D>();
         }
-        if (gm == null)
-        {
-            gm = FindObjectOfType<GameManager>();
-        }
+        gameManager = GameManager.Instance;
     }
 
+    // this handles when the player is hit by other objects
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Damageable enemyHealth = collision.gameObject.GetComponent<Damageable>();
@@ -47,12 +45,12 @@ public class PlayerDamageable : Damageable
         {
             return;
         }
-        gm.DamageHeartUI();
+        gameManager.DamageHeartUI();
         currHealth -= amount;
         Debug.Log(currHealth);
         if (currHealth <= 0)
         {
-            gm.GameOver();
+            gameManager.GameOver();
             Destroy(gameObject);
         }
         else

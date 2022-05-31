@@ -152,7 +152,6 @@ MonoBehaviour:
   playerPos: {fileID: 0}
   slimeAnimator: {fileID: 5237399796640785659}
   jumpCooldown: 4
-  jumpCooldownCounter: 0
   movementDirection: {x: 0, y: 0}
   movementSpeed: 1.8
   jumpSpeed: 6
@@ -175,7 +174,7 @@ MonoBehaviour:
   contactDamage: 1
   iframes: 0.35
   isDying: 0
-  timeUntilDeath: 0.5
+  timeUntilDeath: 0.46
   animator: {fileID: 5237399796640785659}
 --- !u!58 &5237399797069813424
 CircleCollider2D:
