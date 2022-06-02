@@ -14,6 +14,8 @@ public class SlimeBrain : MonoBehaviour
 
     public Vector2 movementDirection;
 
+    private SpriteRenderer slimeSprite;
+
     public float movementSpeed;
     public float jumpSpeed;
 
@@ -26,6 +28,7 @@ public class SlimeBrain : MonoBehaviour
     void Start()
     {
         PlayerController temp = FindObjectOfType<PlayerController>();
+        slimeSprite = GetComponentInChildren<SpriteRenderer>();
         if (temp == null)
         {
             playerPos = null;
@@ -48,6 +51,17 @@ public class SlimeBrain : MonoBehaviour
         {
             // calculate jump vector
             Vector3 direction = (playerPos.position - gameObject.transform.position);
+
+            // flips sprite based on direction
+            if (direction.x > 0)
+            {
+                slimeSprite.flipX = true;
+            }
+            else
+            {
+                slimeSprite.flipX = false;
+            }
+
             float movementRandSpeed = Random.Range(-0.05f, 0.05f);
             if (direction.x > 0)
             {
@@ -87,6 +101,7 @@ public class SlimeBrain : MonoBehaviour
             movementDirection.y += gravity * Time.deltaTime;
             // move sideways too!
         }
+
 
         gameObject.transform.Translate(movementDirection * Time.deltaTime);
 

@@ -176,6 +176,7 @@ MonoBehaviour:
   isDying: 0
   timeUntilDeath: 0.46
   animator: {fileID: 5237399796640785659}
+  coinPrefab: {fileID: 7661032699306502136, guid: 622724856361a894381f0c16b28030dd, type: 3}
 --- !u!58 &5237399797069813424
 CircleCollider2D:
   m_ObjectHideFlags: 0

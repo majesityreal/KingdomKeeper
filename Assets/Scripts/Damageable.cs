@@ -19,6 +19,9 @@ public class Damageable : MonoBehaviour
 
     public Animator animator;
 
+    [SerializeField]
+    private GameObject coinPrefab;
+
     // Start is called before the first frame update
     protected void Start()
     {
@@ -31,6 +34,10 @@ public class Damageable : MonoBehaviour
             {
                 animator = GetComponentInChildren<Animator>();
             }
+        }
+        if (coinPrefab == null)
+        {
+            Debug.LogWarning("The " + gameObject.name + " coin prefab isn't attached! Was this intended?");
         }
     }
 
@@ -75,7 +82,11 @@ public class Damageable : MonoBehaviour
         isDying = true;
         animator.SetBool("isDying", true);
         yield return new WaitForSeconds(timeUntilDeath);
-
+        // drop coin
+        if (coinPrefab != null)
+        {
+            GameObject coin = Instantiate(coinPrefab, gameObject.transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
         yield return null;
     }

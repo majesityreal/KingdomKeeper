@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +13,10 @@ public class GameManager : MonoBehaviour
     public int startingHearts;
     public int pHearts;
 
-    public HeartBrain[] hearts;
+    public UISpritesAnimation[] hearts;
+
+    public Text coinText;
+    private int coins;
 
     public static GameManager Instance; // A static reference to the GameManager instance, singleton pattern used
 
@@ -23,6 +29,8 @@ public class GameManager : MonoBehaviour
         }
         else if (Instance != this) // If there is already an instance and it's not `this` instance
         {
+            // restarting the OG game manager
+            Instance.Start();
             Destroy(gameObject);
         }
     }
@@ -32,6 +40,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         pHearts = startingHearts;
+        coins = 0;
+        hearts = FindObjectsOfType<UISpritesAnimation>();
+        coinText = FindObjectOfType<Text>();
     }
 
     // Update is called once per frame
@@ -63,14 +74,45 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("It's over!");
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public void DamageHeartUI()
     {
+        // doing this because of 0 array indexing
         pHearts--;
+        // finds the heart in the array that needs to disappear
+        foreach (UISpritesAnimation heart in hearts)
+        {
+            Debug.Log(pHearts);
+            if (pHearts == heart.gameObject.transform.GetSiblingIndex())
+            {
+                Debug.Log("Thjis happened");
+                // makes UI heart dissappear. activate means activate animation
+                heart.Activate();
+                return;
+            }
+        }
 
-        // makes UI heart dissappear
-        hearts[pHearts].Dissappear();
+
+    }
+
+    public void AddMoney(int value)
+    {
+        coins++;
+        // update UI
+        if (coins >= 100)
+        {
+            coinText.text = "" + coins;
+        }
+        else if (coins >= 10)
+        {
+            coinText.text = "0" + coins;
+        }
+        else
+        {
+            coinText.text = "00" + coins;
+        }
 
     }
 

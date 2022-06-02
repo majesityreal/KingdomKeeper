@@ -16,6 +16,8 @@ public class BatBrain : MonoBehaviour
 
     public Vector2 movementDirection;
 
+    private SpriteRenderer batSprite;
+
     public bool isAttacking;
 
     public float airPos; // the position to return to in the air
@@ -24,6 +26,7 @@ public class BatBrain : MonoBehaviour
     void Start()
     {
         PlayerController temp = FindObjectOfType<PlayerController>();
+        batSprite = GetComponentInChildren<SpriteRenderer>();
         if (temp == null)
         {
             playerPos = null;
@@ -82,6 +85,18 @@ public class BatBrain : MonoBehaviour
         if (isAttacking)
         {
             movementDirection.y += antiGravity * Time.deltaTime;
+        }
+        else
+        {
+            // flips sprite based on player direction, when not doing sweep attack
+            if (direction.x > 0)
+            {
+                batSprite.flipX = true;
+            }
+            else
+            {
+                batSprite.flipX = false;
+            }
         }
 
         gameObject.transform.Translate(movementDirection * Time.deltaTime);

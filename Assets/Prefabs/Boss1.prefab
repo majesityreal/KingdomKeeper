@@ -108,6 +108,7 @@ MonoBehaviour:
   isDying: 0
   timeUntilDeath: 0
   animator: {fileID: 0}
+  coinPrefab: {fileID: 7661032699306502136, guid: 622724856361a894381f0c16b28030dd, type: 3}
 --- !u!1 &3718248136239678834
 GameObject:
   m_ObjectHideFlags: 0

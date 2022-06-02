@@ -47,7 +47,6 @@ public class PlayerDamageable : Damageable
         }
         gameManager.DamageHeartUI();
         currHealth -= amount;
-        Debug.Log(currHealth);
         if (currHealth <= 0)
         {
             gameManager.GameOver();
