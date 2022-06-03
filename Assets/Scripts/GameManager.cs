@@ -8,10 +8,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
+    public int currLevel; // keeps track of current level
+
     private bool gamePaused;
 
     public int startingHearts;
     public int pHearts;
+
+    public GameObject ingameUI;
 
     public UISpritesAnimation[] hearts;
 
@@ -25,6 +29,9 @@ public class GameManager : MonoBehaviour
         if (Instance == null) // If there is no instance already
         {
             DontDestroyOnLoad(gameObject);
+            ingameUI = GameObject.FindGameObjectWithTag("Canvas");
+            DontDestroyOnLoad(ingameUI);
+            hearts = FindObjectsOfType<UISpritesAnimation>();
             Instance = this;
         }
         else if (Instance != this) // If there is already an instance and it's not `this` instance
@@ -32,6 +39,7 @@ public class GameManager : MonoBehaviour
             // restarting the OG game manager
             Instance.Start();
             Destroy(gameObject);
+            Destroy(ingameUI);
         }
     }
 
@@ -41,7 +49,6 @@ public class GameManager : MonoBehaviour
     {
         pHearts = startingHearts;
         coins = 0;
-        hearts = FindObjectsOfType<UISpritesAnimation>();
         coinText = FindObjectOfType<Text>();
     }
 
@@ -70,6 +77,12 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
     }
 
+    public void NextLevel()
+    {
+        currLevel++;
+        SceneManager.LoadScene("Level" + currLevel);
+    }
+
     // TODO - pull up a 'you died' screen, make restart button
     public void GameOver()
     {
@@ -84,10 +97,8 @@ public class GameManager : MonoBehaviour
         // finds the heart in the array that needs to disappear
         foreach (UISpritesAnimation heart in hearts)
         {
-            Debug.Log(pHearts);
             if (pHearts == heart.gameObject.transform.GetSiblingIndex())
             {
-                Debug.Log("Thjis happened");
                 // makes UI heart dissappear. activate means activate animation
                 heart.Activate();
                 return;

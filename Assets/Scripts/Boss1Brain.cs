@@ -16,6 +16,8 @@ public class Boss1Brain : MonoBehaviour
 
     public bool isCharging;
 
+    private GameManager gameManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,5 +61,17 @@ public class Boss1Brain : MonoBehaviour
             isCharging = false;
         }
         gameObject.transform.Translate(movementDirection * Time.deltaTime);
+    }
+
+    // next level!
+    private void OnDestroy()
+    {
+        gameManager = GameManager.Instance;
+        // handle edge case where player pauses in between the thingy
+        if (gameManager.GetPaused())
+        {
+            gameManager.UnpauseGame();
+        }
+        gameManager.NextLevel();
     }
 }
