@@ -10,6 +10,7 @@ public class WeaponController : MonoBehaviour
     public SpriteRenderer weaponSprite;
 
     public float damage;
+    public bool doesCollisionDamage;
 
     // offset var from player, for sword like weapons
     public float offSet;
@@ -21,14 +22,13 @@ public class WeaponController : MonoBehaviour
         MAGIC = 2
     }
 
-    Weapon currWeapon;
+    public Weapon currWeapon;
+
+    public GameObject arrow;
 
     private void Awake()
     {
         weaponSprite = GetComponent<SpriteRenderer>();
-
-        // temporary controlling the start
-        currWeapon = Weapon.SWORD;
     }
 
     // Update is called once per frame
@@ -56,9 +56,11 @@ public class WeaponController : MonoBehaviour
                 weaponSprite.flipX = false;
                 gameObject.transform.localPosition = new Vector2(offSet, gameObject.transform.localPosition.y);
             }
-            // load animation for slash - temporarily not doing this
-
-            // chech enemies for collision, and then damage them
+        }
+        else if (currWeapon == Weapon.BOW)
+        {
+            p_controller.attacking = true;
+            GameObject shotArrow = Instantiate(arrow, gameObject.transform.position, Quaternion.identity);
         }
     }
 
@@ -70,7 +72,7 @@ public class WeaponController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Damageable enemyHealth = collision.gameObject.GetComponent<Damageable>();
-        if (enemyHealth != null)
+        if (enemyHealth != null && doesCollisionDamage)
         {
             if (enemyHealth.gameObject.tag == "Player")
             {

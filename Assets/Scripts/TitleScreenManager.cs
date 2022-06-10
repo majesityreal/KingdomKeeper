@@ -11,13 +11,23 @@ public class TitleScreenManager : MonoBehaviour
         
     }
 
-    public void Play()
+    public void NewGame()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("CharacterSelect");
+
+    }
+
+    public void StartGame()
+    {
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.gameObject.SetActive(true);
+        }
     }
 
     public void Quit()
     {
+        // anything else needed before quit goes here
         Application.Quit();
     }
 

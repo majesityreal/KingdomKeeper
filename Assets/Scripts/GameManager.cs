@@ -4,23 +4,20 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static SelectCharManager;
 
 public class GameManager : MonoBehaviour
 {
 
     public int currLevel; // keeps track of current level
 
-    private bool gamePaused;
+    private bool gamePaused = false;
 
     public int startingHearts;
     public int pHearts;
 
-    public GameObject ingameUI;
-
-    public UISpritesAnimation[] hearts;
-
-    public Text coinText;
-    private int coins;
+    public int coins;
+    public PlayerClass playerClass;
 
     public static GameManager Instance; // A static reference to the GameManager instance, singleton pattern used
 
@@ -29,9 +26,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null) // If there is no instance already
         {
             DontDestroyOnLoad(gameObject);
-            ingameUI = GameObject.FindGameObjectWithTag("Canvas");
-            DontDestroyOnLoad(ingameUI);
-            hearts = FindObjectsOfType<UISpritesAnimation>();
             Instance = this;
         }
         else if (Instance != this) // If there is already an instance and it's not `this` instance
@@ -39,7 +33,6 @@ public class GameManager : MonoBehaviour
             // restarting the OG game manager
             Instance.Start();
             Destroy(gameObject);
-            Destroy(ingameUI);
         }
     }
 
@@ -49,17 +42,16 @@ public class GameManager : MonoBehaviour
     {
         pHearts = startingHearts;
         coins = 0;
-        coinText = FindObjectOfType<Text>();
+        gamePaused = false;
+        // this is done on Start(), which should only be when the scene loads
+        ResetUI();
+        Debug.Log("This is being called");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // pause feature
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PauseGame();
-        }
+
     }
 
     public bool GetPaused()
@@ -70,11 +62,25 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         gamePaused = true;
+        // pull up pause menu
+        UIManager.Instance.pauseMenu.SetActive(true);
+        Time.timeScale = 0.0f;
     }
 
     public void UnpauseGame()
     {
         gamePaused = false;
+        UIManager.Instance.pauseMenu.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
+    public void QuitToTitle()
+    {
+        gamePaused = false;
+        Time.timeScale = 1.0f;
+        UIManager.Instance.pauseMenu.SetActive(false);
+        UIManager.Instance.gameObject.SetActive(false);
+        SceneManager.LoadScene("TitleScreen");
     }
 
     public void NextLevel()
@@ -86,14 +92,15 @@ public class GameManager : MonoBehaviour
     // TODO - pull up a 'you died' screen, make restart button
     public void GameOver()
     {
-        Debug.Log("It's over!");
-        SceneManager.LoadScene("TitleScreen");
+        // TODO - add something with death here - maybe an ad to replay?
+        QuitToTitle();
     }
 
     public void DamageHeartUI()
     {
         // doing this because of 0 array indexing
         pHearts--;
+        UISpritesAnimation[] hearts = UIManager.Instance.hearts;
         // finds the heart in the array that needs to disappear
         foreach (UISpritesAnimation heart in hearts)
         {
@@ -114,17 +121,31 @@ public class GameManager : MonoBehaviour
         // update UI
         if (coins >= 100)
         {
-            coinText.text = "" + coins;
+            UIManager.Instance.coinText.text = "" + coins;
         }
         else if (coins >= 10)
         {
-            coinText.text = "0" + coins;
+            UIManager.Instance.coinText.text = "0" + coins;
         }
         else
         {
-            coinText.text = "00" + coins;
+            UIManager.Instance.coinText.text = "00" + coins;
         }
 
+    }
+
+    public void ResetUI()
+    {
+        if (UIManager.Instance == null)
+        {
+            return;
+        }
+        UISpritesAnimation[] hearts = UIManager.Instance.hearts;
+        UIManager.Instance.coinText.text = "000";
+        foreach (UISpritesAnimation heart in hearts)
+        {
+            heart.Deactivate();
+        }
     }
 
 }

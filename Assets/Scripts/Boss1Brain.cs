@@ -72,6 +72,10 @@ public class Boss1Brain : MonoBehaviour
         {
             gameManager.UnpauseGame();
         }
-        gameManager.NextLevel();
+        // ensures that boss was killed
+        if (GetComponent<Damageable>().GetHealth() <= 0.0f)
+        {
+            gameManager.NextLevel();
+        }
     }
 }

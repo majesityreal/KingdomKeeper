@@ -51,5 +51,6 @@ public class UISpritesAnimation : MonoBehaviour
         image.enabled = true;
         activate = false;
         index = 0;
+        image.sprite = sprites[index];
     }
 }

@@ -78,7 +78,7 @@ public class EnemySpawner2 : MonoBehaviour
         }
         if (bossSpawned)
         {
-            localInterval = interval - 1f;
+            localInterval = interval / 2;
         }
         yield return new WaitForSeconds(localInterval);
         GameObject newEnemy = Instantiate(bat, new Vector3(Random.Range(-5f, 5), 5.5f, 0), Quaternion.identity);
@@ -103,7 +103,7 @@ public class EnemySpawner2 : MonoBehaviour
         }
         if (bossSpawned)
         {
-            localInterval = interval - 0.5f;
+            localInterval = interval * 0.5f;
         }
         yield return new WaitForSeconds(localInterval);
         int value = (int)Random.Range(0f, 2f);
@@ -139,7 +139,7 @@ public class EnemySpawner2 : MonoBehaviour
         // 10 seconds
         if (bossSpawned)
         {
-            localInterval = interval - 2f;
+            localInterval = interval / 2f;
         }
         yield return new WaitForSeconds(localInterval);
         int value = (int)Random.Range(0f, 2f);

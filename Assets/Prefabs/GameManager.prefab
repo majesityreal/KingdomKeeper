@@ -43,9 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ae068d75507f34a8b7e41608687999, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currLevel: 1
   startingHearts: 3
   pHearts: 0
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  coins: 0
