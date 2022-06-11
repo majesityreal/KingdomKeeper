@@ -39,7 +39,7 @@ public class PlayerDamageable : Damageable
         }
     }
 
-    public void Damage(float amount)
+    new public void Damage(float amount)
     {
         if (lastDamageTime + iframes > Time.time)
         {
@@ -55,6 +55,7 @@ public class PlayerDamageable : Damageable
         else
         {
             lastDamageTime = Time.time;
+            animator.SetTrigger("Hurt");
             StartCoroutine(PlayerDamageColor());
             playerSprite.color = playerDamageColor;
         }

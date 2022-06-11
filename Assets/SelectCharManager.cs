@@ -76,7 +76,7 @@ public class SelectCharManager : MonoBehaviour
         }
         // set the character to the selected character!!
         GameManager.Instance.playerClass = selectedClass;
-        SceneManager.LoadScene("Level1");
+        GameManager.Instance.LoadFirstLevel();
     }
 
     public void ReturnToTitle()

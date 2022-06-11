@@ -19,7 +19,7 @@ public class ProjectileBrain : MonoBehaviour
     {
         if (hasGravity)
         {
-            movementDirection.y = 0.25f;
+            movementDirection.y = 0.75f;
         }
     }
 
@@ -34,7 +34,7 @@ public class ProjectileBrain : MonoBehaviour
 
         gameObject.transform.Translate(new Vector2(movementDirection.x * speed, movementDirection.y) * Time.deltaTime);
 
-        if (gameObject.transform.position.y <= -2.5f)
+        if (gameObject.transform.position.y <= -2.75f)
         {
             Destroy(gameObject);
         }
@@ -59,9 +59,19 @@ public class ProjectileBrain : MonoBehaviour
         }
     }
 
-    public void SetDirection()
+    // positive faces right, negative faces left
+    public void SetDirection(int value)
     {
-
+        if (value < 0)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+            movementDirection.x = -1;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+            movementDirection.x = 1;
+        }
     }
 
 }

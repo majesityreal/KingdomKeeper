@@ -47,3 +47,8 @@ MonoBehaviour:
   startingHearts: 3
   pHearts: 0
   coins: 0
+  playerClass: 0
+  classes:
+  - {fileID: 965230569905900295, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
+  - {fileID: 6053394416368756796, guid: ffd1efab2acb3f148a249d3622fb0be1, type: 3}
+  - {fileID: 0}

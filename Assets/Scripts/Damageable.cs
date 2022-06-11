@@ -95,6 +95,7 @@ public class Damageable : MonoBehaviour
 
     protected void Animate_Hurt()
     {
+        Debug.Log("Hurt animation for: " + gameObject.name);
         if (animator != null)
         {
             animator.SetTrigger("Hurt");

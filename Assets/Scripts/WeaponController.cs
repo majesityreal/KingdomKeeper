@@ -61,6 +61,18 @@ public class WeaponController : MonoBehaviour
         {
             p_controller.attacking = true;
             GameObject shotArrow = Instantiate(arrow, gameObject.transform.position, Quaternion.identity);
+            if (p_controller.playerSprite.flipX == true)
+            {
+                weaponSprite.flipX = true;
+                shotArrow.GetComponent<ProjectileBrain>().SetDirection(-1);
+                gameObject.transform.localPosition = new Vector2(-offSet, gameObject.transform.localPosition.y);
+            }
+            else
+            {
+                weaponSprite.flipX = false;
+                shotArrow.GetComponent<ProjectileBrain>().SetDirection(1);
+                gameObject.transform.localPosition = new Vector2(offSet, gameObject.transform.localPosition.y);
+            }
         }
     }
 

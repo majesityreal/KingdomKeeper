@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     public int coins;
     public PlayerClass playerClass;
 
+    [SerializeField]
+    private GameObject[] classes;
+    private GameObject player;
+
     public static GameManager Instance; // A static reference to the GameManager instance, singleton pattern used
 
     void Awake()
@@ -27,12 +31,13 @@ public class GameManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             Instance = this;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else if (Instance != this) // If there is already an instance and it's not `this` instance
         {
             // restarting the OG game manager
             Instance.Start();
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
     }
 
@@ -45,12 +50,6 @@ public class GameManager : MonoBehaviour
         gamePaused = false;
         // this is done on Start(), which should only be when the scene loads
         ResetUI();
-        Debug.Log("This is being called");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
@@ -81,6 +80,20 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.pauseMenu.SetActive(false);
         UIManager.Instance.gameObject.SetActive(false);
         SceneManager.LoadScene("TitleScreen");
+    }
+
+    public void LoadFirstLevel()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
+    // custom scene loader method, to instantiate the player object
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != "CharacterSelect" || scene.name != "TitleScreen")
+        {
+            player = Instantiate(classes[(int)playerClass], new Vector3(0, 0, 0), Quaternion.identity);
+        }
     }
 
     public void NextLevel()
