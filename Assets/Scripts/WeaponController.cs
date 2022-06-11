@@ -57,7 +57,7 @@ public class WeaponController : MonoBehaviour
                 gameObject.transform.localPosition = new Vector2(offSet, gameObject.transform.localPosition.y);
             }
         }
-        else if (currWeapon == Weapon.BOW)
+        else if (currWeapon == Weapon.BOW || currWeapon == Weapon.MAGIC)
         {
             p_controller.attacking = true;
             GameObject shotArrow = Instantiate(arrow, gameObject.transform.position, Quaternion.identity);

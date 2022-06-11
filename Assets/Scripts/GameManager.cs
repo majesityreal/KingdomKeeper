@@ -90,7 +90,8 @@ public class GameManager : MonoBehaviour
     // custom scene loader method, to instantiate the player object
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name != "CharacterSelect" || scene.name != "TitleScreen")
+        Debug.Log(scene.name);
+        if (scene.name != "CharacterSelect" && scene.name != "TitleScreen")
         {
             player = Instantiate(classes[(int)playerClass], new Vector3(0, 0, 0), Quaternion.identity);
         }
