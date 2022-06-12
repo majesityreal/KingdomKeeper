@@ -30,6 +30,8 @@ public class EnemySpawner1 : MonoBehaviour
     {
         StartCoroutine(spawnSlime(slimeInterval, slimePrefab));
         StartCoroutine(spawnBat(batInterval, batPrefab));
+        AudioManager.Instance.Stop("TitleTheme");
+        AudioManager.Instance.Play("Level1");
     }
 
     void Update()

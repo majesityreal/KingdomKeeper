@@ -6,7 +6,7 @@ public class Damageable : MonoBehaviour
 {
 
     public float maxHealth = 100f;
-    protected float currHealth;
+    public float currHealth;
 
     public float contactDamage;
 
@@ -49,6 +49,7 @@ public class Damageable : MonoBehaviour
     public void SetHealth(float amount)
     {
         currHealth = amount;
+        Debug.Log(currHealth);
     }
 
     public void SetMaxHealth(float amount)

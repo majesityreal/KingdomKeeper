@@ -91,12 +91,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 965230569905900294, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
+      propertyPath: movementSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 965230569905900294, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
       propertyPath: playerAnimator
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 965230569905900295, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
       propertyPath: m_Name
-      value: Archer Variant
+      value: Archer
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 965230569446023943, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}

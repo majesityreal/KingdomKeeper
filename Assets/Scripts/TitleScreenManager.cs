@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class TitleScreenManager : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!AudioManager.Instance.isPlaying("TitleTheme"))
+        {
+            AudioManager.Instance.Play("TitleTheme");
+        }
     }
 
     public void NewGame()
@@ -30,5 +35,7 @@ public class TitleScreenManager : MonoBehaviour
         // anything else needed before quit goes here
         Application.Quit();
     }
+
+
 
 }

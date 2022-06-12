@@ -53,6 +53,15 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        // GET RID OF THIS BEFORE LAUNCHING
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            NextLevel();
+        }
+    }
+
     public bool GetPaused()
     {
         return gamePaused;
