@@ -5,6 +5,8 @@ using UnityEngine;
 public class CoinBrain : MonoBehaviour
 {
 
+    private bool hasBeenPickedUp = false;
+
     public float timeAlive;
     private float timer;
 
@@ -40,7 +42,7 @@ public class CoinBrain : MonoBehaviour
         Damageable enemyHealth = collision.gameObject.GetComponent<Damageable>();
         if (enemyHealth != null)
         {
-            if (enemyHealth.gameObject.tag == "Player")
+            if (enemyHealth.gameObject.tag == "Player" && !hasBeenPickedUp)
             {
                 // add one coin to the total!
                 gameManager.AddMoney(1);
@@ -54,6 +56,8 @@ public class CoinBrain : MonoBehaviour
     {
         // play animation, then wait
         animator.SetTrigger("Pickup");
+        AudioManager.Instance.Play("CoinPickup");
+        hasBeenPickedUp = true;
         yield return new WaitForSeconds(0.67f);
         Destroy(gameObject);
     }

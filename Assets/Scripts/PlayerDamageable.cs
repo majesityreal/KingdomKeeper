@@ -45,6 +45,7 @@ public class PlayerDamageable : Damageable
         {
             return;
         }
+        AudioManager.Instance.Play("PlayerHurt");
         gameManager.DamageHeartUI();
         currHealth -= amount;
         if (currHealth <= 0)

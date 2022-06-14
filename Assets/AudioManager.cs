@@ -20,21 +20,21 @@ public class AudioManager : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
             Instance = this;
+            foreach (Sound s in sounds)
+            {
+                s.source = gameObject.AddComponent<AudioSource>();
+                s.source.clip = s.clip;
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+                s.source.loop = s.loop;
+                s.source.outputAudioMixerGroup = audioMixerGroup;
+            }
         }
         else
         {
             DestroyImmediate(gameObject);
         }
 
-        foreach (Sound s in sounds)
-        {
-            s.source = gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
-            s.source.loop = s.loop;
-            s.source.outputAudioMixerGroup = audioMixerGroup;
-        }
     }
 
     public void Play(string name)

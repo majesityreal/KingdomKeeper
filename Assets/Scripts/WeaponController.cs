@@ -42,6 +42,7 @@ public class WeaponController : MonoBehaviour
         // initiate slashing if a sword
         if (currWeapon == Weapon.SWORD)
         {
+            AudioManager.Instance.Play("PlayerSlash");
             // TODO:
             // prevent player from turning
             p_controller.attacking = true;

@@ -82,6 +82,7 @@ public class Damageable : MonoBehaviour
         animator.SetTrigger("Die");
         isDying = true;
         animator.SetBool("isDying", true);
+        AudioManager.Instance.Play("EnemyDie");
         yield return new WaitForSeconds(timeUntilDeath);
         // drop coin
         if (coinPrefab != null)

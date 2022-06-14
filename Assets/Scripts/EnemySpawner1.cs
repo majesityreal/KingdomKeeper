@@ -34,6 +34,11 @@ public class EnemySpawner1 : MonoBehaviour
         AudioManager.Instance.Play("Level1");
     }
 
+    private void OnDestroy()
+    {
+        AudioManager.Instance.Stop("Level1");
+    }
+
     void Update()
     {
         // 1 is the value of the increment for the timer
