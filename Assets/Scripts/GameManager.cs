@@ -137,6 +137,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void SetFullscreen(bool isFullscreen)
+    {
+        Screen.fullScreen = isFullscreen;
+    }
+
+
+
     public void AddMoney(int value)
     {
         coins++;

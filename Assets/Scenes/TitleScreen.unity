@@ -458,7 +458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &345142268
 Animator:
   serializedVersion: 3
@@ -1855,7 +1855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &994508704
 Animator:
   serializedVersion: 3
@@ -2033,7 +2033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
       propertyPath: sounds.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
       propertyPath: sounds.Array.data[4].clip
@@ -2076,6 +2076,22 @@ PrefabInstance:
       value: CoinPickup
       objectReference: {fileID: 0}
     - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e8ddb919ed6cfd943bfeca79a865d2a1, type: 3}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: PlayerMagic
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0dd2a87e66ebabd4ab9572014aa70b03, type: 3}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: PlayerArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
       propertyPath: sounds.Array.data[4].pitch
       value: 1
       objectReference: {fileID: 0}
@@ -2092,8 +2108,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[9].pitch
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
       propertyPath: sounds.Array.data[3].volume
-      value: 0.8
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
       propertyPath: sounds.Array.data[4].volume
@@ -2110,6 +2134,14 @@ PrefabInstance:
     - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
       propertyPath: sounds.Array.data[7].volume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9208444927838848506, guid: b9f1b235290e151409980e102a560652, type: 3}
+      propertyPath: sounds.Array.data[9].volume
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f1b235290e151409980e102a560652, type: 3}
@@ -2412,6 +2444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Options
       objectReference: {fileID: 0}
+    - target: {fileID: 3149724300801283824, guid: 96526e0386ab15f4d9f1c8a5a2128e93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3149724300801283825, guid: 96526e0386ab15f4d9f1c8a5a2128e93, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2580,7 +2616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1260583831
 Animator:
   serializedVersion: 3

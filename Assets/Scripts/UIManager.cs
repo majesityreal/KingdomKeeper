@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance;
 
+    public Slider volumeSlider;
+
     void Awake()
     {
         if (Instance == null) // If there is no instance already
@@ -43,10 +45,11 @@ public class UIManager : MonoBehaviour
         }
         // resume button
         buttons[0].onClick.AddListener(GameManager.Instance.UnpauseGame);
-        // options button
-        buttons[1].onClick.AddListener(GameManager.Instance.UnpauseGame);
         // quit button
         buttons[2].onClick.AddListener(GameManager.Instance.QuitToTitle);
+
+        AudioManager.Instance.audioMixer.GetFloat("Volume", out float val);
+        volumeSlider.value = val;
     }
 
     // Update is called once per frame

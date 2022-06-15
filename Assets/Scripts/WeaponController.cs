@@ -60,6 +60,14 @@ public class WeaponController : MonoBehaviour
         }
         else if (currWeapon == Weapon.BOW || currWeapon == Weapon.MAGIC)
         {
+            if (currWeapon == Weapon.BOW)
+            {
+                AudioManager.Instance.Play("PlayerArrow");
+            }
+            else
+            {
+                AudioManager.Instance.Play("PlayerMagic");
+            }
             p_controller.attacking = true;
             GameObject shotArrow = Instantiate(arrow, gameObject.transform.position, Quaternion.identity);
             if (p_controller.playerSprite.flipX == true)
