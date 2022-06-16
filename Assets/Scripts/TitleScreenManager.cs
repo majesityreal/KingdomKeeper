@@ -87,4 +87,9 @@ public class TitleScreenManager : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
+    public void CreditsLink(string URL)
+    {
+        Application.OpenURL(URL);
+    }
+
 }

@@ -66,7 +66,7 @@ public class MenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         if (btn.interactable)
         {
-            txt.color = baseColor * btn.colors.highlightedColor * btn.colors.colorMultiplier;
+            txt.color = baseColor * btn.colors.normalColor * btn.colors.colorMultiplier;
             AudioManager.Instance.Play("ButtonSelect");
         }
         else
