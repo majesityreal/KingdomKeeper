@@ -60,7 +60,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ceaee40a796cf4d4a86bbffa2532e960, type: 3}
     - target: {fileID: 965230569905900292, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
       propertyPath: attackCooldown
-      value: 0.7
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 965230569905900293, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
       propertyPath: m_RootOrder
@@ -117,6 +117,14 @@ PrefabInstance:
     - target: {fileID: 965230569905900295, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
       propertyPath: m_Name
       value: Wizard
+      objectReference: {fileID: 0}
+    - target: {fileID: 965230569905900346, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
+      propertyPath: iframes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 965230569905900346, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
+      propertyPath: maxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 965230569905900347, guid: cbb8875e8d568d04886d7870ae236b80, type: 3}
       propertyPath: m_Offset.x

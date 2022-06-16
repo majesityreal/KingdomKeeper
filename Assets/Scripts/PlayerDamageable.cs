@@ -7,8 +7,6 @@ public class PlayerDamageable : Damageable
 
     public BoxCollider2D playerCollider;
 
-    private GameManager gameManager;
-
     public SpriteRenderer playerSprite;
 
     public Color playerDamageColor;
@@ -17,12 +15,32 @@ public class PlayerDamageable : Damageable
 
     new void Start()
     {
-        base.Start();
+        lastDamageTime = Time.time;
+        currHealth = GameManager.Instance.pHearts;
         if (playerCollider == null)
         {
             playerCollider = GetComponent<BoxCollider2D>();
         }
-        gameManager = GameManager.Instance;
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+            if (animator == null)
+            {
+                animator = GetComponentInChildren<Animator>();
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Heal(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            Damage(2);
+        }
     }
 
     // this handles when the player is hit by other objects
@@ -46,11 +64,14 @@ public class PlayerDamageable : Damageable
             return;
         }
         AudioManager.Instance.Play("PlayerHurt");
-        gameManager.DamageHeartUI();
+        for (int i = 0; i < amount; i++)
+        {
+            GameManager.Instance.DamageHeartUI();
+        }
         currHealth -= amount;
         if (currHealth <= 0)
         {
-            gameManager.GameOver();
+            GameManager.Instance.GameOver();
             Destroy(gameObject);
         }
         else
@@ -61,6 +82,15 @@ public class PlayerDamageable : Damageable
             playerSprite.color = playerDamageColor;
         }
 
+    }
+
+    public void Heal(float amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            GameManager.Instance.AddHeartUI();
+        }
+        currHealth += amount;
     }
 
     IEnumerator PlayerDamageColor()

@@ -1396,6 +1396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 4792557551222951520}
+  heartPrefab: {fileID: 5950668241385130010, guid: 17e26ed3c652e8f46992b7892303539a, type: 3}
   hearts:
   - {fileID: 4792557551563425262}
   - {fileID: 1159554375684677494}

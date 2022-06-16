@@ -137,6 +137,33 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void AddHeartUI()
+    {
+        pHearts++;
+        // adds new heart to the canvas if we go over
+        if (pHearts > UIManager.Instance.hearts.Length)
+        {
+            pHearts--;
+            UIManager.Instance.AddHeart();
+            pHearts++;
+        }
+        else
+        {
+            UISpritesAnimation[] hearts = UIManager.Instance.hearts;
+            // finds the heart in the array that needs to disappear
+            foreach (UISpritesAnimation heart in hearts)
+            {
+                // we subtract 1 because we previously added 1 to pHearts
+                if (pHearts - 1 == heart.gameObject.transform.GetSiblingIndex())
+                {
+                    heart.Deactivate();
+                    // gotta do this after bc of the shifting index
+                    return;
+                }
+            }
+        }
+    }
+
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;

@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 0.6
   sprites:
-  - {fileID: -8361718363703625843, guid: c44b1710f93b1a14284b1864e0c368e6, type: 3}
+  - {fileID: 21300000, guid: a3c51889320cd1b409f8bd3318594466, type: 3}
   - {fileID: -8361718363703625843, guid: c44b1710f93b1a14284b1864e0c368e6, type: 3}
   - {fileID: -407594110345639801, guid: c44b1710f93b1a14284b1864e0c368e6, type: 3}
   - {fileID: 9081303329409707452, guid: c44b1710f93b1a14284b1864e0c368e6, type: 3}

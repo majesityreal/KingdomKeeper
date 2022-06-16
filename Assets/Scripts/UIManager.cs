@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject pauseMenu;
 
+    public GameObject heartPrefab;
     public UISpritesAnimation[] hearts;
     public Text coinText;
 
@@ -50,6 +51,11 @@ public class UIManager : MonoBehaviour
 
         AudioManager.Instance.audioMixer.GetFloat("Volume", out float val);
         volumeSlider.value = val;
+
+        for (int i = 3; i < hearts.Length; i++)
+        {
+            hearts[i].Activate();
+        }
     }
 
     // Update is called once per frame
@@ -58,13 +64,26 @@ public class UIManager : MonoBehaviour
         // pause feature
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (SceneManager.GetActiveScene().name != "TitleScreen")
+            if (SceneManager.GetActiveScene().name != "TitleScreen" && SceneManager.GetActiveScene().name != "CharacterSelect")
             {
                 GameManager.Instance.PauseGame();
             }
         }
     }
 
-
+    public void AddHeart()
+    {
+        GameObject heart = Instantiate(heartPrefab, gameObject.transform.GetChild(1));
+        heart.transform.localPosition = new Vector2(-126 + (GameManager.Instance.pHearts * 62), 11f);
+        UISpritesAnimation[] temp = new UISpritesAnimation[hearts.Length + 1];
+        // copying old stuff into new array
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            temp[i] = hearts[i];
+        }
+        // adding final heart
+        temp[hearts.Length] = heart.GetComponent<UISpritesAnimation>();
+        hearts = temp;
+    }
 
 }
