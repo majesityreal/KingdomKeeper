@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Instance = this;
             SceneManager.sceneLoaded += OnSceneLoaded;
+            ResetGame();
         }
         else if (Instance != this) // If there is already an instance and it's not `this` instance
         {
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour
 
     public void AddMoney(int value)
     {
-        coins++;
+        coins += value;
         // update UI
         if (coins >= 100)
         {

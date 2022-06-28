@@ -16,9 +16,31 @@ public class PurchaseCanvasBrain : MonoBehaviour
         
     }
 
-    public void PurchaseHeart()
+    public void PurchaseHeart(int cost)
     {
-
+        if (GameManager.Instance.coins > cost)
+        {
+            // TODO - play purchase sound
+            GameManager.Instance.AddMoney(-cost);
+            FindObjectOfType<PlayerDamageable>().Heal(1);
+        }
+        else
+        {
+            // play NULL sound, cannot buy sound
+        }
     }
 
+    public void PurchaseSpeed(int cost)
+    {
+        if (GameManager.Instance.coins > cost)
+        {
+            // TODO - play purchase sound
+            GameManager.Instance.AddMoney(-cost);
+            FindObjectOfType<PlayerController>().movementSpeed += 0.75f;
+        }
+        else
+        {
+            // play NULL sound, cannot buy sound
+        }
+    }
 }

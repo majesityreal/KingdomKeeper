@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner2 : MonoBehaviour
 {
+    bool isSpawning;
 
     public int slimeCounter;
     public int batCounter;
@@ -33,6 +34,12 @@ public class EnemySpawner2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isSpawning = false;
+    }
+
+    public void StartSpawning()
+    {
+        isSpawning = true;
         StartCoroutine(spawnSlime(slimeInterval, slimePrefab));
         StartCoroutine(spawnBat(batInterval, batPrefab));
         StartCoroutine(spawnCharger(chargerInterval, chargerPrefab));
@@ -40,6 +47,10 @@ public class EnemySpawner2 : MonoBehaviour
 
     void Update()
     {
+        if (!isSpawning)
+        {
+            return;
+        }
         // 1 is the value of the increment for the timer
         if (timeKeeper + 1 <= Time.time)
         {
