@@ -66,7 +66,43 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Level1
     clip: {fileID: 8300000, guid: 21d158e3610395a48a0b33a0d8114837, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: EnemyDie
+    clip: {fileID: 8300000, guid: 491dfde1596ea8a4a9516de09a31021d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHurt
+    clip: {fileID: 8300000, guid: e261fc09838ba984b9d2b88d756d6b1e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerSlash
+    clip: {fileID: 8300000, guid: 5ffc8798253731e489c32b226edb167b, type: 3}
+    volume: 0.4
+    pitch: 1.3
+    loop: 0
+    source: {fileID: 0}
+  - name: CoinPickup
+    clip: {fileID: 8300000, guid: 6adc43edd73d3664c8ccb30ca2cbd674, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerMagic
+    clip: {fileID: 8300000, guid: e8ddb919ed6cfd943bfeca79a865d2a1, type: 3}
+    volume: 0.5
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerArrow
+    clip: {fileID: 8300000, guid: 0dd2a87e66ebabd4ab9572014aa70b03, type: 3}
+    volume: 0.8
+    pitch: 1.1
+    loop: 0
     source: {fileID: 0}
