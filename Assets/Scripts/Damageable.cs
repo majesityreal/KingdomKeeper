@@ -35,10 +35,6 @@ public class Damageable : MonoBehaviour
                 animator = GetComponentInChildren<Animator>();
             }
         }
-        if (coinPrefab == null)
-        {
-            Debug.LogWarning("The " + gameObject.name + " coin prefab isn't attached! Was this intended?");
-        }
     }
 
     public float GetHealth()
@@ -49,7 +45,6 @@ public class Damageable : MonoBehaviour
     public void SetHealth(float amount)
     {
         currHealth = amount;
-        Debug.Log(currHealth);
     }
 
     public void SetMaxHealth(float amount)
@@ -79,9 +74,13 @@ public class Damageable : MonoBehaviour
     // handles the death of this game object
     IEnumerator Die()
     {
-        animator.SetTrigger("Die");
+        if (animator != null)
+        {
+            animator.SetTrigger("Die");
+            animator.SetBool("isDying", true);
+
+        }
         isDying = true;
-        animator.SetBool("isDying", true);
         AudioManager.Instance.Play("EnemyDie");
         yield return new WaitForSeconds(timeUntilDeath);
         // drop coin
@@ -97,7 +96,6 @@ public class Damageable : MonoBehaviour
 
     protected void Animate_Hurt()
     {
-        Debug.Log("Hurt animation for: " + gameObject.name);
         if (animator != null)
         {
             animator.SetTrigger("Hurt");

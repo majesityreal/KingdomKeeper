@@ -74,10 +74,4 @@ public class AudioManager : MonoBehaviour
     {
         audioMixer.SetFloat("Volume", volume);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

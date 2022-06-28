@@ -35,31 +35,25 @@ public class GameManager : MonoBehaviour
         }
         else if (Instance != this) // If there is already an instance and it's not `this` instance
         {
-            // restarting the OG game manager
-            Instance.Start();
             DestroyImmediate(gameObject);
         }
     }
 
-
-    // this is called when reloading the game
-    void Start()
-    {
-        pHearts = startingHearts;
-        coins = 0;
-        gamePaused = false;
-        // this is done on Start(), which should only be when the scene loads
-        ResetUI();
-
-    }
-
-    private void Update()
+    void Update()
     {
         // GET RID OF THIS BEFORE LAUNCHING
         if (Input.GetKeyDown(KeyCode.P))
         {
             NextLevel();
         }
+    }
+
+    public void ResetGame()
+    {
+        pHearts = startingHearts;
+        coins = 0;
+        gamePaused = false;
+        ResetUI();
     }
 
     public bool GetPaused()
@@ -96,6 +90,7 @@ public class GameManager : MonoBehaviour
     {
         currLevel = 1;
         SceneManager.LoadScene("Level1");
+        ResetGame();
     }
 
     // custom scene loader method, to instantiate the player object
