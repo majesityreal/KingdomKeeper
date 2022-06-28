@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     public void QuitToTitle()
     {
         gamePaused = false;
+        currLevel = 0;
         Time.timeScale = 1.0f;
         UIManager.Instance.pauseMenu.SetActive(false);
         UIManager.Instance.gameObject.SetActive(false);
@@ -93,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadFirstLevel()
     {
+        currLevel = 1;
         SceneManager.LoadScene("Level1");
     }
 
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         // TODO - add something with death here - maybe an ad to replay?
+        currLevel = 0;
         QuitToTitle();
     }
 

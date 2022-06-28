@@ -47,14 +47,17 @@ public class UIManager : MonoBehaviour
         // resume button
         buttons[0].onClick.AddListener(GameManager.Instance.UnpauseGame);
         // quit button
-        buttons[2].onClick.AddListener(GameManager.Instance.QuitToTitle);
+        buttons[1].onClick.AddListener(GameManager.Instance.QuitToTitle);
 
         AudioManager.Instance.audioMixer.GetFloat("Volume", out float val);
         volumeSlider.value = val;
 
         for (int i = 3; i < hearts.Length; i++)
         {
-            hearts[i].Activate();
+            if (GameManager.Instance.pHearts <= i)
+            {
+                hearts[i].Activate();
+            }
         }
     }
 

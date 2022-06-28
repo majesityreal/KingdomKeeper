@@ -47,27 +47,6 @@ public class EnemySpawner1 : MonoBehaviour
             inGameTimer += 1f;
             timeKeeper = Time.time;
         }
-    }
-
-    private IEnumerator spawnBat(float interval, GameObject bat)
-    {
-
-        float localInterval = interval;
-        // 22.5 seconds
-        if (inGameTimer > 22.5f)
-        {
-            localInterval -= 1f;
-        }
-        // 35.5 seconds
-        if (inGameTimer > 35.5f)
-        {
-            localInterval -= 0.5f;
-        }
-        // 47.5 seconds
-        if (inGameTimer > 47.5f)
-        {
-            localInterval -= 1f;
-        }
         // 67.5 seconds
         if (inGameTimer > 67.5f && !bossSpawned)
         {
@@ -76,9 +55,24 @@ public class EnemySpawner1 : MonoBehaviour
             int value = (int)Random.Range(0f, 2f);
             GameObject boss1 = Instantiate(bossPrefab, new Vector2(-7.95f + (15.9f * value), -1.5f), Quaternion.identity);
         }
+    }
+
+    private IEnumerator spawnBat(float interval, GameObject bat)
+    {
+
+        float localInterval = interval;
+        if (batCounter >= 4)
+        {
+            localInterval -= 1f;
+
+        }
+        if (batCounter >= 8)
+        {
+            localInterval -= 0.5f;
+        }
         if (bossSpawned)
         {
-            localInterval = interval - 1f;
+            localInterval = interval - 1.5f;
         }
         yield return new WaitForSeconds(localInterval);
         GameObject newEnemy = Instantiate(bat, new Vector3(Random.Range(-5f, 5), 5.5f, 0), Quaternion.identity);
@@ -89,26 +83,27 @@ public class EnemySpawner1 : MonoBehaviour
     private IEnumerator spawnSlime(float interval, GameObject enemy)
     {
         float localInterval = interval;
-        if (inGameTimer > 20f)
+        if (slimeCounter >= 5)
         {
             localInterval -= 0.5f;
         }
-        if (inGameTimer > 30f)
+        if (slimeCounter >= 10)
         {
             localInterval -= 0.5f;
         }
-        if (inGameTimer > 45f)
+        if (slimeCounter >= 15)
         {
-            localInterval -= 0.5f;
+            localInterval -= 0.2f;
         }
         if (bossSpawned)
         {
-            localInterval = interval - 0.5f;
+            localInterval = interval;
         }
         yield return new WaitForSeconds(localInterval);
         int value = (int) Random.Range(0f, 2f);
         // if value == 0, left side, value == 1, right side
         GameObject newEnemy = Instantiate(enemy, new Vector2(-9.5f + (19f * value), Random.Range(-6f, 6f)), Quaternion.identity);
+        slimeCounter++;
         StartCoroutine(spawnSlime(interval, enemy));
     }
 }

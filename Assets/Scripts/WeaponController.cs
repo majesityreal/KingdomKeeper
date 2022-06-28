@@ -74,6 +74,8 @@ public class WeaponController : MonoBehaviour
             {
                 weaponSprite.flipX = true;
                 shotArrow.GetComponent<ProjectileBrain>().SetDirection(-1);
+                shotArrow.GetComponentInChildren<SpriteRenderer>().flipY = true;
+                shotArrow.GetComponentInChildren<SpriteRenderer>().flipX = true;
                 gameObject.transform.localPosition = new Vector2(-offSet, gameObject.transform.localPosition.y);
             }
             else

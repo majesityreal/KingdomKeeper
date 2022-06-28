@@ -1138,7 +1138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1393680528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1158,7 +1158,7 @@ MonoBehaviour:
   batPrefab: {fileID: 6775905018767720703, guid: 3c01254f36570cd4ca285ee35d54ea9f, type: 3}
   bossPrefab: {fileID: 3718248136017004682, guid: 9db7c9c1dab50fd4799f8b1c73f2ad44, type: 3}
   slimeInterval: 3.5
-  batInterval: 5
+  batInterval: 7
 --- !u!4 &1393680529
 Transform:
   m_ObjectHideFlags: 0
