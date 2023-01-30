@@ -110,7 +110,7 @@ public class EnemySpawner2 : MonoBehaviour
         }
         if (slimeCounter >= 15)
         {
-            localInterval -= 0.5f;
+            localInterval -= 0.2f;
         }
         if (bossSpawned)
         {

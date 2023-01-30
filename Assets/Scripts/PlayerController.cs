@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementDirection;
 
     public bool attacking;
+    public bool isDashing;
 
     public SpriteRenderer playerSprite;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         movementDirection = new Vector2();
+        isDashing = false;
         if (playerSprite == null)
         {
             playerSprite = GetComponentInChildren<SpriteRenderer>();
@@ -73,6 +75,14 @@ public class PlayerController : MonoBehaviour
                 grounded = false;
             }
         }
+        // dash!!!
+        if (Input.GetKeyDown(KeyCode.K) && !isDashing)
+        {
+            isDashing = true;
+            movementSpeed *= 4;
+            // start task to stop the speed
+            StartCoroutine(StopDash());
+        }
 
         // calculate Gravity!
         if (!grounded)
@@ -95,4 +105,13 @@ public class PlayerController : MonoBehaviour
             grounded = true;
         }
     }
+
+    private IEnumerator StopDash()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isDashing = false;
+        movementSpeed *= 0.25f;
+
+    }
+
 }

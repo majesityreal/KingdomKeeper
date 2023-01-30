@@ -99,6 +99,7 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name != "CharacterSelect" && scene.name != "TitleScreen")
         {
+            // classes[int] stores GO's for each player class
             player = Instantiate(classes[(int)playerClass], new Vector3(0, 0, 0), Quaternion.identity);
         }
     }

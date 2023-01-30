@@ -56,9 +56,10 @@ public class TitleScreenManager : MonoBehaviour
 
     }
 
+    // starts at level 1 temporarily
     public void NewGame()
     {
-        SceneManager.LoadScene("CharacterSelect");
+        GameManager.Instance.LoadFirstLevel();
 
     }
 
